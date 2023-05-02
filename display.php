@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Display page</title>
 </head>
+<style>
+    body{
+        background-color:aliceblue;
+    }
+</style>
 <body>
     <div>
             <?php
@@ -16,18 +21,28 @@
         echo '<table>';
         echo '<br><br><button><a href="signup.html">Add a new user</a></button><br>
         <table border="1px">
-            <tr><th>First name</th>
+            <tr><th>Id</th>
+            <th>First name</th>
             <th>Last name</th>
             <th>Email</th>
-            <th>Password</th>
+            <th>Gender</th>
             <th>Operations</th></tr>';
         while($row=mysqli_fetch_assoc($result)){
+            $id=$row['id'];
             $firstName=$row['fname'];
             $lastName=$row['lname'];
             $email=$row['email'];
             $password=$row['password'];
+            $gender=$row['gender'];
             $hashed=password_hash($password,PASSWORD_DEFAULT);
-            echo '<tr><td>'.$firstName.'</td><td>'.$lastName.'</td><td>'.$email.'</td><td>'.$hashed.'</td><td><button><a href="update.html></td><td><button><a href="delete.html">Delete</a></button></td>';
+            echo '<tr><td>'.$id.'</td><td>'.$firstName.'</td>
+            <td>'.$lastName.'</td>
+            <td>'.$email.'</td>
+            <td>'.$gender.'</td>
+            <td>
+            <button><a href="delete.php?deleteid="'.$id.'">Delete</a></button>
+            <button><a href="update.php?updateid="'.$id.'">Update</a></button>
+            </td>';
         }
     }
     /*

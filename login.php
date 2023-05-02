@@ -8,13 +8,13 @@ if(isset($_POST['submit'])){
         echo 'Error: '.mysqli->error;
         exit();
     }
-    if($result->num_rows>0){
+    // if($result->num_rows>0){
         session_start();
         $_SESSION['email']=$email;
         header("location: display.php");
         exit();
-    }else{
-        echo "Invalid username or password";
-    }
+    // }else{
+    //     echo "Invalid username or password";
+    // }
 }
 ?>
